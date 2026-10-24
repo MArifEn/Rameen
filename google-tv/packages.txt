@@ -1,0 +1,25 @@
+# Packages that gtv-cleanup.sh disables on a Google TV device.
+# One package per line. Lines starting with '#' are ignored.
+# Packages not installed on your device are skipped.
+# Everything here can be turned back on with: ./gtv-cleanup.sh restore
+
+# --- Google extras ---
+com.google.android.apps.tv.dreamx         # Ambient mode screensaver (shows promos); TV falls back to a basic screensaver
+com.google.android.youtube.tvmusic        # YouTube Music
+com.google.android.play.games             # Google Play Games
+com.google.android.tvtutorials            # Tutorials / tips
+com.google.android.feedback               # Feedback reporter
+com.google.android.tvrecommendations      # Recommendations provider (some builds)
+
+# --- Preinstalled partner apps: delete the '#' for any you never use ---
+# com.netflix.ninja                       # Netflix
+# com.amazon.amazonvideo.livingroom       # Prime Video
+# com.disney.disneyplus                   # Disney+
+# com.hbo.hbonow                          # Max
+# com.spotify.tv.android                  # Spotify
+# com.google.android.videos               # Google TV "Shop"/Play Movies (can break the Shop tab)
+
+# Never add these: they break the launcher, casting, the remote, voice search or the Play Store.
+#   com.google.android.apps.tv.launcherx  com.google.android.apps.mediashell
+#   com.google.android.tv.remote.service  com.google.android.katniss
+#   com.android.vending                   com.google.android.gms
