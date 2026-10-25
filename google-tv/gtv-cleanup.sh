@@ -24,6 +24,13 @@ need_adb() {
 }
 
 need_device() {
+  # Wireless debugging often lists the same TV twice (IP:port and an mDNS name).
+  if [[ -z "${ANDROID_SERIAL:-}" ]] && (( $(adb devices | awk 'NR > 1 && $2 == "device"' | wc -l) > 1 )); then
+    echo "More than one device is connected:" >&2
+    adb devices | awk 'NR > 1 && $2 == "device" { print "  " $1 }' >&2
+    echo "Pick one, e.g.: export ANDROID_SERIAL=<ip:port>" >&2
+    exit 1
+  fi
   if [[ "$(adb get-state 2>/dev/null)" != "device" ]]; then
     echo "No TV connected. Run: $0 connect <tv-ip>" >&2
     exit 1
